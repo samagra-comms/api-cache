@@ -1,0 +1,13 @@
+version: "3"
+services:
+  cache_server:
+    image: varnish:latest
+    container_name: varnish
+    environment:
+      VARNISH_SIZE: 200M
+    volumes:
+      - ./config/default.vcl:/etc/varnish/default.vcl
+    tmpfs:
+      - /Users/chakshugautam/Work/UCI-Extra/api-cache/tmp:exec
+    ports:
+      - "8080:80"
